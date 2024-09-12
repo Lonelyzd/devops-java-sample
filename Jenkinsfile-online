@@ -18,7 +18,7 @@ pipeline {
         GITHUB_ACCOUNT = 'Lonelyzd'
         APP_NAME = 'devops-java-sample'
         SONAR_CREDENTIAL_ID = 'sonar-qube'
-        GITHUB_TOKEN = 'github-token'
+        GITHUB_TOKEN = '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'
     }
 
     stages {
@@ -83,9 +83,10 @@ pipeline {
                     sh 'git config --global user.email "kubesphere@yunify.com" '
                     sh 'git config --global user.name "kubesphere" '
                     sh 'git tag -a $TAG_NAME -m "$TAG_NAME" '
+                    sh 'echo "$GITHUB_TOKEN"'
+                    sh 'echo "$DOCKER_CREDENTIAL_ID"'
                     sh 'git push http://"$GITHUB_TOKEN"@github.com/$GITHUB_ACCOUNT/devops-java-sample.git --tags --ipv4'
-                    echo "$GITHUB_TOKEN"
-                    echo "$DOCKER_CREDENTIAL_ID"
+                    
                   }
                 sh 'docker tag  $REGISTRY/$DOCKERHUB_NAMESPACE/$APP_NAME:SNAPSHOT-$BRANCH_NAME-$BUILD_NUMBER $REGISTRY/$DOCKERHUB_NAMESPACE/$APP_NAME:$TAG_NAME '
                 sh 'docker push  $REGISTRY/$DOCKERHUB_NAMESPACE/$APP_NAME:$TAG_NAME '
