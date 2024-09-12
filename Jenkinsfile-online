@@ -18,7 +18,7 @@ pipeline {
         GITHUB_ACCOUNT = 'Lonelyzd'
         APP_NAME = 'devops-java-sample'
         SONAR_CREDENTIAL_ID = 'sonar-qube'
-        GITHUB_TOKEN = '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'
+        GITHUB_TOKEN = 'github-token'
     }
 
     stages {
